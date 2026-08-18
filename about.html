@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | Nirmol Air Purifiers</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;600;700&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        .page-header {
+            text-align: center;
+            padding: 8rem 2rem 4rem;
+            background: linear-gradient(180deg, rgba(0, 230, 118, 0.05) 0%, transparent 100%);
+        }
+        
+        .mission-section {
+            padding: 2rem 2rem 6rem;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .mission-section p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: var(--color-text-muted);
+            line-height: 1.8;
+        }
+
+        .team-section {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+            margin-top: 4rem;
+        }
+
+        .team-card {
+            background-color: var(--color-card-bg);
+            border-radius: 16px;
+            padding: 3rem 2rem;
+            text-align: center;
+            position: relative;
+            border: 1px solid var(--color-border);
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), border-color var(--transition-speed);
+        }
+
+        .team-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--color-primary-green);
+        }
+
+        .avatar-placeholder {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.05);
+            margin: 0 auto 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--color-primary-green);
+            border: 2px solid var(--color-border);
+            transition: background-color var(--transition-speed), color var(--transition-speed), border-color var(--transition-speed);
+        }
+
+        .team-card:hover .avatar-placeholder {
+            background-color: var(--color-primary-green);
+            color: #000;
+            border-color: var(--color-primary-green);
+        }
+
+        .team-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+            color: #fff;
+        }
+
+        .team-card p {
+            color: var(--color-text-muted);
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body class="dark-theme">
+
+    <!-- Navigation -->
+    <nav class="glass">
+        <a href="index.html" class="logo">
+            <img src="assets/logo.png" alt="Nirmol" style="aspect-ratio: 2/1; object-fit: contain;">
+        </a>
+        <a href="cart.html" class="cart-icon">🛒 <span id="cart-count">0</span></a>
+        <button class="menu-toggle" id="menu-toggle">☰</button>
+        <div class="nav-links" id="nav-links">
+            <a href="index.html">Home</a>
+            <a href="shop.html">Shop</a>
+            <a href="about.html" class="active">About & Team</a>
+        </div>
+    </nav>
+
+    <main>
+        <div class="page-header reveal">
+            <h1 style="font-size: 3.5rem; margin-bottom: 1rem;">Our Mission</h1>
+            <p class="text-green" style="font-size: 1.2rem; font-weight: 500;">Pure air, every breath.</p>
+        </div>
+
+        <section class="mission-section reveal" style="transition-delay: 0.2s;">
+            <p>
+                Dhaka and Chattogram consistently rank among the cities with the worst air quality globally. 
+                With rapid urbanization and the health awareness of the post-pandemic era, families are increasingly 
+                focusing on respiratory health—especially for young children and elderly members.
+            </p>
+            <p>
+                <strong>Nirmol</strong> was born out of a critical market gap. The current indoor air market is split: 
+                high-quality imported products are too expensive, while low-cost, unbranded imports lack reliability and 
+                after-sales support. 
+            </p>
+            <p>
+                We engineered a solution specifically designed to handle high concentrations of PM2.5 and dust. By providing 
+                affordable pricing, flexible EMI financing, and strong local warranties, Nirmol ensures that pure air is no 
+                longer a luxury, but an accessible right for every home in Bangladesh.
+            </p>
+        </section>
+
+        <!-- The Team -->
+        <section class="team-section">
+            <div class="reveal" style="text-align: center;">
+                <h2 style="font-size: 2.5rem;">Team Ubuntu</h2>
+                <p class="text-muted" style="margin-top: 0.5rem; font-size: 1.1rem;">The creators of Nirmol</p>
+            </div>
+            
+            <div class="team-grid">
+                <!-- Nabil Hossain -->
+                <div class="team-card glass reveal" style="transition-delay: 0.1s;">
+                    <div class="avatar-placeholder">NH</div>
+                    <h3>Nabil Hossain</h3>
+                    <p>ID: 1821866630</p>
+                </div>
+                
+                <!-- Jamil Mahmud Emran -->
+                <div class="team-card glass reveal" style="transition-delay: 0.2s;">
+                    <div class="avatar-placeholder">JE</div>
+                    <h3>Jamil Mahmud Emran</h3>
+                    <p>ID: 2212057030</p>
+                </div>
+                
+                <!-- Faria Jahan juty -->
+                <div class="team-card glass reveal" style="transition-delay: 0.3s;">
+                    <div class="avatar-placeholder">FJ</div>
+                    <h3>Faria Jahan Juty</h3>
+                    <p>ID: 2221417630</p>
+                </div>
+                
+                <!-- Tanvir Ahmed -->
+                <div class="team-card glass reveal" style="transition-delay: 0.4s;">
+                    <div class="avatar-placeholder">TA</div>
+                    <h3>Tanvir Ahmed</h3>
+                    <p>ID: 2221583030</p>
+                </div>
+                
+                <!-- Munawarul Alam -->
+                <div class="team-card glass reveal" style="transition-delay: 0.5s;">
+                    <div class="avatar-placeholder">MA</div>
+                    <h3>Munawarul Alam</h3>
+                    <p>ID: 2222391030</p>
+                </div>
+                
+                <!-- Alve Asef -->
+                <div class="team-card glass reveal" style="transition-delay: 0.6s;">
+                    <div class="avatar-placeholder">AA</div>
+                    <h3>Alve Asef</h3>
+                    <p>ID: 2311888030</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4 class="text-green">NIRMOL</h4>
+                <p>Pure air, every breath.<br>Engineered locally for Bangladesh.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Products</h4>
+                <a href="shop.html">Nirmol Mini</a>
+                <a href="shop.html">Nirmol Home</a>
+                <a href="shop.html">Nirmol Pro</a>
+            </div>
+            <div class="footer-col">
+                <h4>Support</h4>
+                <a href="#">Contact Us</a>
+                <a href="#">Warranty Info</a>
+                <a href="#">Filter Subscriptions</a>
+            </div>
+            <div class="footer-col">
+                <h4>Company</h4>
+                <a href="about.html">About Us</a>
+                <a href="about.html">Our Team</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2026 Nirmol Air Purifiers. Team Ubuntu. All rights reserved.
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const reveals = document.querySelectorAll('.reveal');
+            const revealOnScroll = () => {
+                const windowHeight = window.innerHeight;
+                reveals.forEach(reveal => {
+                    const revealTop = reveal.getBoundingClientRect().top;
+                    const revealPoint = 100;
+                    if (revealTop < windowHeight - revealPoint) {
+                        reveal.classList.add('visible');
+                    }
+                });
+            };
+            window.addEventListener('scroll', revealOnScroll);
+            revealOnScroll();
+        });
+    </script>
+    <script src="js/cart.js"></script>
+</body>
+</html>

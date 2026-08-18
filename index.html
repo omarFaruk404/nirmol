@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nirmol | Pure Air, Every Breath</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;600;700&family=Inter:wght@400;500;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        /* Home Specific Styles */
+        #hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 100px 2rem 0 2rem;
+        }
+
+        .hero-text {
+            flex: 1;
+            padding-right: 2rem;
+            max-width: 600px;
+        }
+
+        .hero-text h1 {
+            font-size: 4rem;
+            font-family: var(--font-bangla);
+            line-height: 1.1;
+            margin-bottom: 1rem;
+            background: linear-gradient(90deg, var(--color-primary-green), #fff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-text p {
+            font-size: 1.2rem;
+            color: var(--color-text-muted);
+            margin-bottom: 2rem;
+        }
+
+        .hero-visual {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-visual .img-placeholder {
+            width: 100%;
+            max-width: 500px;
+            height: 600px;
+            border-radius: 20px;
+            box-shadow: 0 20px 50px rgba(0, 230, 118, 0.15);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .feature-card {
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            transition: transform var(--transition-speed);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--color-primary-green);
+        }
+
+        .split-section {
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+            margin: 6rem 0;
+        }
+
+        .split-text {
+            flex: 1;
+        }
+
+        .split-visual {
+            flex: 1;
+        }
+
+        .split-section.reverse {
+            flex-direction: row-reverse;
+        }
+
+        @media (max-width: 768px) {
+            #hero {
+                flex-direction: column;
+                text-align: center;
+                padding-top: 120px;
+            }
+
+            .hero-text {
+                padding-right: 0;
+                margin-bottom: 3rem;
+            }
+
+            .split-section,
+            .split-section.reverse {
+                flex-direction: column;
+                text-align: center;
+                gap: 2rem;
+            }
+
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body class="dark-theme">
+
+    <!-- Navigation -->
+    <nav class="glass">
+        <a href="index.html" class="logo">
+            <img src="assets/logo.png" alt="Nirmol" style="aspect-ratio: 2/1; object-fit: contain;">
+        </a>
+        <a href="cart.html" class="cart-icon">🛒 <span id="cart-count">0</span></a>
+        <button class="menu-toggle" id="menu-toggle">☰</button>
+        <div class="nav-links" id="nav-links">
+            <a href="index.html" class="active">Home</a>
+            <a href="shop.html">Shop</a>
+            <a href="about.html">About & Team</a>
+        </div>
+    </nav>
+
+    <!-- Live AQI Widget -->
+    <div class="aqi-widget">
+        DHAKA AQI NOW: 187 UNHEALTHY
+    </div>
+
+    <!-- Hero Section -->
+    <section id="hero">
+        <div class="hero-text reveal">
+            <h1>প্রতিটি নিঃশ্বাস হোক নির্মল</h1>
+            <p>For health-conscious urban families who worry about the air their loved ones breathe, Nirmol is a home
+                air purifier that delivers effective, locally engineered air cleaning at an affordable price.</p>
+            <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                <a href="shop.html" class="magnetic-btn">Shop the Lineup</a>
+                <a href="#problem" class="magnetic-btn secondary">Learn More</a>
+            </div>
+        </div>
+        <div class="hero-visual reveal" style="transition-delay: 0.2s;">
+            <img src="assets/hero.png" alt="Nirmol Air Purifier"
+                style="width: 100%; aspect-ratio: 4/5; object-fit: cover; border-radius: 12px; box-shadow: 0 10px 30px rgba(0, 230, 118, 0.1); border: 1px solid var(--color-border);">
+        </div>
+    </section>
+
+    <main class="container">
+
+        <!-- The Problem -->
+        <section id="problem" class="split-section reveal">
+            <div class="split-text">
+                <h2 class="text-green" style="font-size: 2.5rem; margin-bottom: 1rem;">The Indoor Air Crisis</h2>
+                <p class="text-muted" style="font-size: 1.1rem; margin-bottom: 1rem;">
+                    Indoor air quality has become an emergency public health issue in metropolitan cities such as Dhaka
+                    and Chattogram, due to severe air pollution and frequent winter smog.
+                </p>
+                <p class="text-muted" style="font-size: 1.1rem;">
+                    With rapid urbanization and heightened health awareness, families with young children and elderly
+                    members are increasingly focused on respiratory health. The current market forces a choice between
+                    expensive imported brands or unreliable unbranded units.
+                </p>
+            </div>
+            <div class="split-visual">
+                <img src="assets/problem.jpg" alt="Indoor Air Crisis in Dhaka"
+                    style="width: 100%; aspect-ratio: 3/2; object-fit: cover; border-radius: 12px; box-shadow: 0 10px 30px rgba(0, 230, 118, 0.1); border: 1px solid var(--color-border);">
+            </div>
+        </section>
+
+        <!-- The Solution -->
+        <section class="split-section reverse reveal">
+            <div class="split-text">
+                <h2 style="font-size: 2.5rem; margin-bottom: 1rem;">Engineered for <span
+                        class="text-green">Bangladesh</span></h2>
+                <p class="text-muted" style="font-size: 1.1rem; margin-bottom: 1rem;">
+                    Nirmol bridges the gap as an affordable, locally engineered air purification solution. Our 3-stage
+                    True HEPA H13 filtration is specifically tuned to Bangladesh's unique pollution profile.
+                </p>
+                <p class="text-muted" style="font-size: 1.1rem;">
+                    Backed by a robust domestic warranty, omnichannel accessibility, and flexible EMI financing, Nirmol
+                    provides pure air to middle- and upper-middle-income households without the premium markup.
+                </p>
+            </div>
+            <div class="split-visual">
+                <img src="assets/solution.jpg" alt="Filter Technology"
+                    style="width: 100%; aspect-ratio: 3/2; object-fit: cover; border-radius: 12px; box-shadow: 0 10px 30px rgba(0, 230, 118, 0.1); border: 1px solid var(--color-border);">
+            </div>
+        </section>
+
+        <!-- Features Grid -->
+        <section class="section-padding reveal">
+            <h2 class="text-center" style="font-size: 2.5rem; margin-bottom: 1rem;">Why Choose Nirmol?</h2>
+            <p class="text-center text-muted" style="max-width: 600px; margin: 0 auto;">Because unlike premium imported
+                brands, Nirmol is built for Bangladesh's air, backed by local service, and priced for real families.</p>
+
+            <div class="features-grid">
+                <div class="feature-card glass">
+                    <h3 class="text-green" style="font-size: 1.5rem; margin-bottom: 1rem;">True HEPA H13</h3>
+                    <p class="text-muted">Traps PM2.5, dust, smoke, and odors with an activated-carbon filter tuned to
+                        local pollution levels.</p>
+                </div>
+                <div class="feature-card glass">
+                    <h3 class="text-green" style="font-size: 1.5rem; margin-bottom: 1rem;">2-Year Warranty</h3>
+                    <p class="text-muted">Enjoy peace of mind with a comprehensive local warranty and a nationwide
+                        authorized service network.</p>
+                </div>
+                <div class="feature-card glass">
+                    <h3 class="text-green" style="font-size: 1.5rem; margin-bottom: 1rem;">Filter Subscription</h3>
+                    <p class="text-muted">Guaranteed filter availability at fixed prices. Never worry about finding
+                        replacements again.</p>
+                </div>
+                <div class="feature-card glass">
+                    <h3 class="text-green" style="font-size: 1.5rem; margin-bottom: 1rem;">Easy Financing</h3>
+                    <p class="text-muted">Flexible EMI options through banks and mobile network providers make clean air
+                        accessible to all.</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4 class="text-green">NIRMOL</h4>
+                <p>Pure air, every breath.<br>Engineered locally for Bangladesh.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Products</h4>
+                <a href="shop.html">Nirmol Mini</a>
+                <a href="shop.html">Nirmol Home</a>
+                <a href="shop.html">Nirmol Pro</a>
+            </div>
+            <div class="footer-col">
+                <h4>Support</h4>
+                <a href="#">Contact Us</a>
+                <a href="#">Warranty Info</a>
+                <a href="#">Filter Subscriptions</a>
+            </div>
+            <div class="footer-col">
+                <h4>Company</h4>
+                <a href="about.html">About Us</a>
+                <a href="about.html">Our Team</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2026 Nirmol Air Purifiers. Team Ubuntu. All rights reserved.
+        </div>
+    </footer>
+
+    <!-- Sticky CTA -->
+    <a href="shop.html" class="sticky-cta magnetic-btn">Shop Now - EMI Available</a>
+
+    <script>
+        // Scroll Reveal Logic
+        document.addEventListener('DOMContentLoaded', () => {
+            const reveals = document.querySelectorAll('.reveal');
+            const revealOnScroll = () => {
+                const windowHeight = window.innerHeight;
+                reveals.forEach(reveal => {
+                    const revealTop = reveal.getBoundingClientRect().top;
+                    const revealPoint = 100;
+                    if (revealTop < windowHeight - revealPoint) {
+                        reveal.classList.add('visible');
+                    }
+                });
+            };
+            window.addEventListener('scroll', revealOnScroll);
+            revealOnScroll(); // Trigger on load
+        });
+    </script>
+    <script src="js/cart.js"></script>
+</body>
+
+</html>

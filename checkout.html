@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout | Nirmol Air Purifiers</title>
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;600;700&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        .page-header {
+            text-align: center;
+            padding: 8rem 2rem 4rem;
+            background: linear-gradient(180deg, rgba(0, 230, 118, 0.05) 0%, transparent 100%);
+        }
+        .checkout-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 3rem;
+            margin-bottom: 6rem;
+        }
+        
+        .checkout-section {
+            background-color: var(--color-card-bg);
+            border: 1px solid var(--color-border);
+            border-radius: 16px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+        .checkout-section h2 { margin-bottom: 1.5rem; border-bottom: 1px solid var(--color-border); padding-bottom: 1rem;}
+        
+        .form-group { margin-bottom: 1.5rem; }
+        .form-group label { display: block; margin-bottom: 0.5rem; color: var(--color-text-muted); }
+        .form-control {
+            width: 100%;
+            padding: 1rem;
+            background-color: rgba(0,0,0,0.5);
+            border: 1px solid var(--color-border);
+            border-radius: 8px;
+            color: #fff;
+            font-family: inherit;
+        }
+        .form-control:focus { outline: none; border-color: var(--color-primary-green); }
+
+        .payment-methods { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+        .payment-method {
+            flex: 1;
+            min-width: 100px;
+            padding: 1rem;
+            border: 1px solid var(--color-border);
+            border-radius: 8px;
+            text-align: center;
+            cursor: pointer;
+            transition: all var(--transition-speed);
+        }
+        .payment-method.active {
+            border-color: var(--color-primary-green);
+            background-color: rgba(0, 230, 118, 0.1);
+            color: var(--color-primary-green);
+            font-weight: 600;
+        }
+
+        .payment-details { display: none; }
+        .payment-details.active { display: block; animation: fadeIn 0.3s ease-out; }
+        
+        @keyframes fadeIn { from {opacity: 0;} to {opacity: 1;} }
+
+        .spinner {
+            width: 60px; height: 60px;
+            border: 5px solid rgba(0, 230, 118, 0.2);
+            border-top-color: var(--color-primary-green);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 2rem;
+        }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .summary-item { display: flex; justify-content: space-between; margin-bottom: 1rem; color: var(--color-text-muted);}
+        .summary-total { display: flex; justify-content: space-between; font-size: 1.2rem; font-weight: 700; margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--color-border); color: #fff;}
+
+        /* Success Modal */
+        #success-modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+        .modal-content {
+            background: var(--color-bg);
+            padding: 4rem;
+            border-radius: 16px;
+            text-align: center;
+            border: 1px solid var(--color-primary-green);
+            box-shadow: 0 0 50px rgba(0, 230, 118, 0.2);
+        }
+        .checkmark {
+            width: 80px; height: 80px; border-radius: 50%;
+            background: var(--color-primary-green);
+            display: flex; align-items: center; justify-content: center;
+            margin: 0 auto 2rem; color: #000; font-size: 2.5rem;
+        }
+
+        @media (max-width: 1024px) {
+            .checkout-container { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body class="dark-theme">
+
+    <nav class="glass">
+        <a href="index.html" class="logo">
+            <img src="assets/logo.png" alt="Nirmol" style="aspect-ratio: 2/1; object-fit: contain;">
+        </a>
+        <a href="cart.html" class="cart-icon">🛒 <span id="cart-count">0</span></a>
+        <button class="menu-toggle" id="menu-toggle">☰</button>
+        <div class="nav-links" id="nav-links">
+            <a href="index.html">Home</a>
+            <a href="shop.html">Shop</a>
+            <a href="about.html">About & Team</a>
+        </div>
+    </nav>
+
+    <main>
+        <div class="page-header">
+            <h1 style="font-size: 3.5rem; margin-bottom: 1rem;">Checkout</h1>
+        </div>
+
+        <div class="checkout-container">
+            <div class="checkout-left">
+                <form id="checkout-form">
+                    <div class="checkout-section glass">
+                        <h2>Shipping Information</h2>
+                        <div class="form-group">
+                            <label>Full Name</label>
+                            <input type="text" class="form-control" required placeholder="Enter your full name">
+                        </div>
+                        <div class="form-group">
+                            <label>Phone Number</label>
+                            <input type="tel" class="form-control" required placeholder="Enter your phone number">
+                        </div>
+                        <div class="form-group">
+                            <label>Delivery Address</label>
+                            <textarea class="form-control" rows="3" required placeholder="Enter your full address in Dhaka/Chattogram"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="checkout-section glass">
+                        <h2>Payment Method</h2>
+                        <div class="payment-methods">
+                            <div class="payment-method active" data-method="card">Card</div>
+                            <div class="payment-method" data-method="mfs">bKash / Nagad / Rocket</div>
+                            <div class="payment-method" data-method="emi">EMI (Credit Card)</div>
+                        </div>
+
+                        <!-- Card Details -->
+                        <div id="payment-card" class="payment-details active">
+                            <div class="form-group">
+                                <label>Card Number</label>
+                                <input type="text" class="form-control" placeholder="0000 0000 0000 0000" id="card-num">
+                            </div>
+                            <div style="display: flex; gap: 1rem;">
+                                <div class="form-group" style="flex: 1;">
+                                    <label>Expiry Date</label>
+                                    <input type="text" class="form-control" placeholder="MM/YY">
+                                </div>
+                                <div class="form-group" style="flex: 1;">
+                                    <label>CVV</label>
+                                    <input type="text" class="form-control" placeholder="123">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- MFS Details -->
+                        <div id="payment-mfs" class="payment-details">
+                            <p class="text-muted" style="margin-bottom: 1rem;">Pay securely using your preferred Mobile Financial Service.</p>
+                            <div class="form-group">
+                                <label>MFS Account Number</label>
+                                <input type="tel" class="form-control" placeholder="e.g. 017XXXXXXXX" id="mfs-num">
+                            </div>
+                        </div>
+
+                        <!-- EMI Details -->
+                        <div id="payment-emi" class="payment-details">
+                            <p class="text-muted" style="margin-bottom: 1rem;">0% EMI available for up to 12 months with partner banks.</p>
+                            <div class="form-group">
+                                <label>Credit Card Number</label>
+                                <input type="text" class="form-control" placeholder="0000 0000 0000 0000" id="emi-num">
+                            </div>
+                            <div class="form-group">
+                                <label>Select EMI Tenure</label>
+                                <select class="form-control">
+                                    <option>3 Months</option>
+                                    <option>6 Months</option>
+                                    <option>12 Months</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="magnetic-btn" style="width: 100%; margin-top: 2rem;">Pay Now</button>
+                    </div>
+                </form>
+            </div>
+
+            <div class="checkout-right">
+                <div class="checkout-section glass" style="position: sticky; top: 100px;">
+                    <h2>Order Summary</h2>
+                    <div id="order-items"></div>
+                    <div class="summary-item" style="margin-top: 1rem;">
+                        <span>Subtotal</span>
+                        <span>৳ <span id="summary-subtotal">0</span></span>
+                    </div>
+                    <div class="summary-item">
+                        <span>Shipping</span>
+                        <span class="text-green">Free</span>
+                    </div>
+                    <div class="summary-total">
+                        <span>Total</span>
+                        <span>৳ <span id="summary-total">0</span></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Processing Modal -->
+    <div id="processing-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 2000; align-items: center; justify-content: center;">
+        <div class="modal-content" style="border-color: #555;">
+            <div class="spinner"></div>
+            <h2 style="font-size: 2rem; margin-bottom: 1rem; color: #fff;">Processing Payment...</h2>
+            <p class="text-muted">Please do not close this window.</p>
+        </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div id="success-modal">
+        <div class="modal-content">
+            <div class="checkmark">✓</div>
+            <h2 class="text-green" style="font-size: 2.5rem; margin-bottom: 1rem;">Payment Successful!</h2>
+            <p class="text-muted" style="margin-bottom: 2rem; font-size: 1.1rem;">Thank you for your order. Your Nirmol air purifier is on its way!</p>
+            <a href="index.html" class="magnetic-btn secondary">Return to Home</a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4 class="text-green">NIRMOL</h4>
+                <p>Pure air, every breath.<br>Engineered locally for Bangladesh.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Products</h4>
+                <a href="shop.html">Nirmol Mini</a>
+                <a href="shop.html">Nirmol Home</a>
+                <a href="shop.html">Nirmol Pro</a>
+            </div>
+            <div class="footer-col">
+                <h4>Support</h4>
+                <a href="#">Contact Us</a>
+                <a href="#">Warranty Info</a>
+                <a href="#">Filter Subscriptions</a>
+            </div>
+            <div class="footer-col">
+                <h4>Company</h4>
+                <a href="about.html">About Us</a>
+                <a href="about.html">Our Team</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2026 Nirmol Air Purifiers. Team Ubuntu. All rights reserved.
+        </div>
+    </footer>
+
+    <script src="js/cart.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Load Cart Summary
+            const cart = getCart();
+            const orderItemsContainer = document.getElementById('order-items');
+            const summarySubtotal = document.getElementById('summary-subtotal');
+            const summaryTotal = document.getElementById('summary-total');
+            
+            if (cart.length === 0) {
+                window.location.href = 'shop.html'; // redirect if empty
+            }
+
+            let total = 0;
+            cart.forEach(item => {
+                total += item.price * item.quantity;
+                orderItemsContainer.innerHTML += `
+                    <div class="summary-item">
+                        <span>${item.name} x${item.quantity}</span>
+                        <span>৳ ${(item.price * item.quantity).toLocaleString()}</span>
+                    </div>
+                `;
+            });
+            summarySubtotal.innerText = total.toLocaleString();
+            summaryTotal.innerText = total.toLocaleString();
+
+            // Payment Method Tabs
+            const methods = document.querySelectorAll('.payment-method');
+            const details = document.querySelectorAll('.payment-details');
+
+            methods.forEach(method => {
+                method.addEventListener('click', () => {
+                    // Reset all
+                    methods.forEach(m => m.classList.remove('active'));
+                    details.forEach(d => d.classList.remove('active'));
+                    
+                    // Activate clicked
+                    method.classList.add('active');
+                    const target = method.getAttribute('data-method');
+                    document.getElementById('payment-' + target).classList.add('active');
+                    
+                    // Setup required fields correctly
+                    document.getElementById('card-num').required = target === 'card';
+                    document.getElementById('mfs-num').required = target === 'mfs';
+                    document.getElementById('emi-num').required = target === 'emi';
+                });
+            });
+            // Initial require
+            document.getElementById('card-num').required = true;
+
+            // Form Submit
+            const form = document.getElementById('checkout-form');
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                
+                // Show Processing
+                document.getElementById('processing-modal').style.display = 'flex';
+                
+                // Simulate network request/processing time
+                setTimeout(() => {
+                    document.getElementById('processing-modal').style.display = 'none';
+                    // Clear cart
+                    localStorage.removeItem('nirmol_cart');
+                    // Show Success
+                    document.getElementById('success-modal').style.display = 'flex';
+                }, 2500);
+            });
+        });
+    </script>
+</body>
+</html>
